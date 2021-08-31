@@ -11,7 +11,7 @@ description: "GoSign.lt paslaugų integracija"
 
 Elektroninių dokumentų pasirašymas vyksta tokiais etapais:
 - kliento IS **serveris iškviečia pasirašymo paslaugos** serverio web servisą perduodamas pasirašymo parametrus ir pasirašymui skirtus PDF failus. Web servisas klientui grąžina unikalią pasirašymo puslapio nuorodą (URL);
-- naudotojo **naršyklėje atidaromas** pasirašymo paslaugos **web puslapis** (galima pasirinkti iš [keleto variantų](sign-templates.md)).
+- naudotojo **naršyklėje atidaromas** pasirašymo paslaugos **web puslapis** (galima pasirinkti iš [kelių variantų](sign-templates.md)).
 - pasirašymo paslauga **atvaizduoja** naudotojui pasirašymui skirtų dokumentų **sąrašą**. Naudotojas gali peržiūrėti pasirašomų dokumentų turinį;
 - naudotojas pasirenka pasirašymo infrastruktūrą (būdą) ir **inicijuoja visų dokumentų pasirašymą**;
 - pasirašant stacionaria infrastruktūra PIN kodas suvedamas vieną kartą (jei stacionarios pasirašymo infrastruktūros draiveris tai leidžia);
