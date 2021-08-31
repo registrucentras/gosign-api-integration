@@ -77,7 +77,7 @@ programinėmis priemonėmis sugeneruojame masyvą:
 ]
 ```
 
-serelizuojame masyvą, kurį ir pasirašysime:
+serializuojame masyvą, kurį ir pasirašysime:
 
 ```xml
 <clientId>client_id</clientId><signerPersonalCode>signer_code</signerPersonalCode><responseUrl>http://example.com/app</responseUrl><signingType>Signature</signingType><fileDigest>0v5NcpPFHEttzbsxm0urXlc5MIE=</fileDigest><fileName>pdf.pdf</fileName><fileId>111111</fileId><fileURL>https://example.com/pdf.pdf</fileURL>
