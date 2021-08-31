@@ -1,0 +1,12 @@
+plugins:
+  - jekyll-include-cache
+
+remote_theme: "pmarsceill/just-the-docs"
+
+name: GoSign.lt | pasirašymo paslaugos integracija 
+lang: lt-LT
+title: GoSign API
+
+avatar: "/assets/img/avatar-icon.png"
+
+description: Šio dokumento tikslas yra aprašyti sąsają tarp srautinio pasirašymo paslaugos ir šią paslaugą naudojančių trečiųjų šalių informacinių sistemų.
