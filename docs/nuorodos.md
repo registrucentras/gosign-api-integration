@@ -8,4 +8,4 @@ nav_order: 99
 
 * [Kvalifikuotas elektroninis parašas](https://www.elektroninis.lt/)
 * [Dokumentų pasirašymas](https://www.gosign.lt/)
-* [Klaidų ir klausimų registravimas](https://github.com/registrucentras/gosign-integration/issues)
+* [Klaidų ir klausimų registravimas](https://github.com/registrucentras/gosign-api-integration/issues)
