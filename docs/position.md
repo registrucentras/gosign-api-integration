@@ -16,7 +16,7 @@ Elemento `position` reikšmė **nurodo parašo vizualizacijos vietą** pasirašy
 | `absolute`, `page`, `x`, `y`, `width`, `height`  | Elektroninio parašo vizualizacijos vieta yra absoliuti puslapio atžvilgiu. Parametras `page` nurodo puslapio numerį, kuriame rodomas parašas. Puslapiai numeruojami nuo 1. Neigiama parametro reikšmė nurodo puslapio numerį skaičiuojant nuo dokumento galo (pvz. Reikšmė -2 reiškia priešpaskutinį dokumento puslapį). Parametrai `x` ir `y` nurodo absoliučią horizontalią ir vertikalią parašo kairio viršutinio kampo padėtį puslapyje. Teigiama reikšmė reiškia, kad atstumas matuojamas nuo kairio puslapio krašto arba nuo puslapio viršaus. Neigiama reikšmė reiškia, kad atstumas matuojamas nuo dešinio puslapio krašto arba nuo puslapio apačios. Parametrai `width` ir `height` nurodo parašo vizualizacijos plotį ir aukštį. Jei parametruose `x`, `y`, `width` ir `height` nurodyta tik reikšmė, laikoma, kad atstumas nurodytas matavimo vienetais `point` ( 1pt = 0.351mm). Jei po reikšmės seka santrumpos `mm` arba `cm`, laikoma, kad atstumas nurodytas atitinkamai milimetrais arba centimetrais |
 | `named`, `fieldName`  | Elektroninis parašas yra dedamas į iš anksto sukurtą tuščią (nepasirašytą) elektroninio parašo lauką. Parametras `fieldName` nurodo dokumente egzistuojančio parašo lauko vardą |
 
-**Pavyždžiai**
+**Pavyzdžiai**
 
 Parašas nerodomas:
 
