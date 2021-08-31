@@ -16,4 +16,4 @@ Paslaugai gauti papildomai jums reikės:
 - sugeneruoti [RSA raktų porą](key-generation.md);
 - pasirinkti pasirašymo puslapio [šabloną](sign-templates.md).
 
-Jei pastebėjote neatitikimų mūsų pateiktoje dokumentacijoje ar turite techninių klausimų realizuojant integraciją savo sistemoje, prašome šiuo klausimus registruoti [klaidų ir klausimų registravimo sistemoje](https://github.com/registrucentras/gosign-integration/issues).
+Jei pastebėjote neatitikimų mūsų pateiktoje dokumentacijoje ar turite techninių klausimų realizuojant integraciją savo sistemoje, prašome šiuo klausimus registruoti [klaidų ir klausimų registravimo sistemoje](https://github.com/registrucentras/gosign-api-integration/issues).
