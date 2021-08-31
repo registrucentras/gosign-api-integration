@@ -23,4 +23,4 @@ Pasirašymo **paslaugos saugumas užtikrinamas naudojant asimetrinę kriptografi
 
 ## Pagalba
 
-* [Klaidų ir klausimų registravimas](https://github.com/registrucentras/gosign-integration/issues)
+* [Klaidų ir klausimų registravimas](https://github.com/registrucentras/gosign-api-integration/issues)
