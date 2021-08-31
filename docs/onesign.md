@@ -28,7 +28,7 @@ nav_order: 1
 | file  | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF failai) |
 | [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
 
-## InitSigning metode naudojami kiti stuktūriniai tipai
+## InitSigning metode naudojami kiti struktūriniai tipai
 
 ### SignRequestWebClientInfo struktūrinis tipas
 
