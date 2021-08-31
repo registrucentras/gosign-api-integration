@@ -84,7 +84,7 @@ serializuojame masyvą, kurį ir pasirašysime:
 ```
 atkreipkite dėmesį:
 - rezultate **nėra įtraukiami kompleksinio tipo elementai** kaip: `clientInfo`, `files` ir t.t..;
-- kadangi suaugmui užtikrinti užtenka `fileDigest` rezultate **nėra įtraukiamas `file` `content` elementas**. 
+- kadangi saugumui užtikrinti užtenka `fileDigest` rezultate **nėra įtraukiamas `file` `content` elementas**. 
 
 pasirašome naudojant PHP:
 
