@@ -26,7 +26,7 @@ nav_order: 2
 | file  | [SourceFileRemote[1..N]](#sourcefileremote-struktūrinis-tipas)  | Failas pasirašymui. Failai pateikiamai kaip nuorodos pasiekiamos iš pasirašymo serverio aplinkos (tik PDF failai) |
 | [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
 
-## InitMultiSign metode naudojami kiti stuktūriniai tipai
+## InitMultiSign metode naudojami kiti struktūriniai tipai
 
 ### SignRequestWebClientInfo struktūrinis tipas
 
