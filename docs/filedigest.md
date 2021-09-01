@@ -34,3 +34,4 @@ echo 'binary + base64encode: ' . base64_encode($fileDigest);
 binary: MrKmͻ1K^W90
 binary + base64encode: 0v5NcpPFHEttzbsxm0urXlc5MIE=
 ```
+
