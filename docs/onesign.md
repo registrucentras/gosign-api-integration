@@ -262,3 +262,65 @@ Keep-Alive: timeout=1
 Connection: Keep-Alive
 Content-Type: text/plain
 ```
+
+## Seal metodas
+
+Metodas naudojamas RC spaudui uždėti ant PDF dokumentų. `Seal` tipas sudarytas iš:
+
+| Elementas  | Tipas | Aprašymas |
+| ------------- | ------------- | ------------- |
+| clientInfo | [SignRequestClientId[1]](#signrequestclientid-struktūrinis-tipas)  | Informacija apie klientą |
+| file  | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF failai) |
+| [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
+
+## Seal metode naudojami kiti struktūriniai tipai
+
+### SignRequestClientId struktūrinis tipas
+
+Struktūrinis duomenų tipas `SignRequestClientId` aprašomas kaip:
+
+| Elementas  | Tipas | Aprašymas |
+| ------------- | ------------- | ------------- |
+| clientId  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius |
+
+### Užklausos pavyzdys
+
+```xml
+<SOAP-ENV:Envelope
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:ones="http://www.registrucentras.lt/onesignservice">
+	<SOAP-ENV:Body>
+		<ones:SealRequest>
+			<ones:clientInfo>
+				<clientId>client_id</clientId>
+			</ones:clientInfo>
+			<ones:file>
+				<fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
+				<fileName>sample.pdf</fileName>
+				<content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
+			</ones:file>
+			<signature>PMuOewIFfS+uualQuTO2uAAbl/OFv219Xp6jtGC13eTbocAoVIJJeu/xmngJpt5rgcjldN0/mGuFY6rh9eDTBDRa8HDXK43VQYRBheHt/QQEJh3DvDmcblrUP30aV8nq0lowYR5xhmxIZDkFwTTaUn9fV476gaG63qBXhCJdx4k=</signature>
+		</ones:SealRequest>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+### Atsakymo pavyzdys
+
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns3:SealResponse xmlns:ns3="http://www.registrucentras.lt/onesignservice">
+         <signerCertificate>PDV1WF47KldsSyYgbmByZ2dHfWNLOXEmP3gwcCV7OHNndlZffCZsbmlyNmZVI0R8T083NERSUmpsWHZ7Y3JUdzBPWVo+czMwYVxPTlZBaG1UQD5ic1tAWFBqbFNIKlttK0lbKy1abE8zJn5PTE0iVyg8cG4rdSZYUg3fmt1dzwpbkY+N2ZHbWllO1wgZ2FuXiRFSE9BLSB3QlkgWk8iWXMhY1NpMnowcipGTnMrdyFzfHBwYU0+eGInQmUlS2pDajJrNDkrfD9WZVMhWihOUUg9XD88MywiT0FVXlchNH1WLX5sdHtTY2tZQEFJYGkiME5QTXBeKUshInhld0Jc1k7Y3tsOipFZTZUVENScmo6SW95Y3Fsbn5TMjhsYWhPOntCeiFaMzcqIWA=bDpyIn49O0tHfGpHRklbJHxIfHwkMy0gRFVkIlJFWDpYPjowUExRWHg6IX0jfk9gWDU3d2UoNnchelIncWt+MzdcXlswUlptIld+MzZ1MEB6fEhZOHkjRG8R09fYmhhUlpqcDd6N0t2O0FBZ28tKWYrO0hjQlVXJ09WLiE+X15USzB6NnFJQ0tNK0NZakRjLFw+bT46JSROJ1I3KT8rN3EnRW9XMV5ZbSQkTmBWdkhcJTZdNzhBRCBFTklodFoicDlyYCphaVRFZHteZmllV1p2MTUgX345R312RUkrKFdPjlRaCpeKk9tS01wVnosRyx4QWBWbnlmTHtraXtMRElXWV92Q1xqSnMjQzQ8SEVxaUEtZHc9L0VUbn5ZPihCIGcuaTJ6LlBLeFx0XCY8RThXdVdKejdBbltxYmF+MXs2S2ZWRmNda2M4LiJpKHlnX0JURGdUMV9JemtaVFBNP2QiMGBQeQ=alAuNlphJCpcTXNmPXw0bXtIUCREaCI2OHR+eyMqWz4wTlgndCshNGc9Nk5+SiNEcSw1bkxzN2EyQlxqR2c1WWwlUmdAYSJmMzlUPTNkcj8=</signerCertificate>
+         <signerCertificateTrusted>true</signerCertificateTrusted>
+         <file>
+            <fileDigest>b7ITt5heY+e6Lm+AXJnYgqBiLos=</fileDigest>
+            <fileName>sample-s0812.pdf</fileName>
+            <content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
+         </file>
+         <signature>lDzM9em93bknUW/TdTGtqd97JyCFEdOBbuLUzWFxLNCRJAnoe/bF/zkj9jdByWl6CWwOj6ECqy3Sb6mZ9JoPWDvHdWnKYxd/QerqZMWA+IOuWTWbmAZxTyncHvVlP6yxZkCSVYQmkuywKPJG8Ra86W9h3n0HiXmgIo6Gf+rtty/AVA+zefhhuhoHwn6B8uXJ9mgNLuD6mtKZq+Iw5pStUFNTjRGID5HEtEQ9SmUgcKgjHCon1HcsKRxGulMWOCo3jqNejJt+08TVTTKa9DQmKY35nUFC5cehQwjX2E2XJtDHPxXoKhFJJvw4g27gZjUb1j/mZzkK0R3RE9WYp11sqQ==</signature>
+      </ns3:SealResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
