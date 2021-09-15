@@ -13,7 +13,8 @@ nav_order: 1
 
 - *InitSigning*, naudojamas **inicijuoti** dokumento **pasirašymą**;
 - *SigningResult*, naudojamas **pasirašymo būsenai sužinoti** (jei pasirašymo transakcija yra pasibaigusi sėkmingai, gražinamas pasirašytas dokumentas ir informaciją apie pasirašiusį asmenį);
-- *SigningCancel*, naudojamas pasirašymo **transakcijai nutraukti**.
+- *SigningCancel*, naudojamas pasirašymo **transakcijai nutraukti**;
+- *Seal*, naudojamas RC spaudui dėti ant PDF dokumentų (tik Registrų Centro sistemoms).
 
 ### InitSigning metodas
 
@@ -263,7 +264,7 @@ Connection: Keep-Alive
 Content-Type: text/plain
 ```
 
-## Seal metodas
+## Seal metodas (tik Registrų centro sistemoms)
 
 Metodas naudojamas RC spaudui uždėti ant PDF dokumentų. `Seal` tipas sudarytas iš:
 
