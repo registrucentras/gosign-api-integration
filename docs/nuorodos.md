@@ -4,6 +4,10 @@ title: Nuorodos
 nav_order: 99
 ---
 
+# Integracijos
+
+* [OneSign API PHP klientas](https://github.com/registrucentras/onesign)
+
 # Nuorodos
 
 * [Kvalifikuotas elektroninis parašas](https://www.elektroninis.lt/)
