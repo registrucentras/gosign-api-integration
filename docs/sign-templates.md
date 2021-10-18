@@ -11,14 +11,14 @@ Elektroninių dokumentų pasirašymas naudojant pasirašymo **paslaugą vyksta k
 
 ## "Standard" šablonas
 
-![standart](https://user-images.githubusercontent.com/39025147/129519400-d7750c7a-41a3-4d39-932d-2d150e46375b.png)
+![standart](https://user-images.githubusercontent.com/84323247/137734633-041cf4d2-6d15-44dd-8734-efb6bbc195ac.png)
 
 ## "Frame" šablonas
 
-![frame](https://user-images.githubusercontent.com/39025147/129519425-fb1b931c-bcde-4e12-9ae8-63db6ce2d1e3.png)
+![frame](https://user-images.githubusercontent.com/84323247/137734692-6a17e441-67db-4526-9246-cf531efc4996.png)
 
 ## "Responsive" šablonas
 
-![responsive](https://user-images.githubusercontent.com/39025147/129519447-050ce12b-6803-431c-a3bf-4d84166c11c1.png)
+![Responsive](https://user-images.githubusercontent.com/84323247/137734715-e37fe178-e555-4780-8b9a-94d6d7aa039b.png)
 
 Kurį šabloną naudosite, **pasirinkite paslaugos užsakymo metu**. Šabloną **gali keisti tik GoSign.lt administracija**.
