@@ -79,7 +79,6 @@ Paprastas duomenų tipas `infrastructureType` nurodo galimus pasirašymo infrast
 | Reikšmė  | Aprašymas |
 | ------------- | ------------- |
 | Stationary  | Leidžiama pasirašyti naudojant stacionarų elektroninį parašą |
-| Mobile | Leidžiama pasirašyti naudojant mobilų elektroninį parašą |
 
 ### SourceFileRemote struktūrinis tipas
 
