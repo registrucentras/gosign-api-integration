@@ -270,6 +270,7 @@ Metodas naudojamas RC spaudui uždėti ant PDF dokumentų. `Seal` tipas sudaryta
 
 | Elementas  | Tipas | Aprašymas |
 | ------------- | ------------- | ------------- |
+| pin | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | spaudo PIN kodas |
 | clientInfo | [SignRequestClientId[1]](#signrequestclientid-struktūrinis-tipas)  | Informacija apie klientą |
 | file  | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF failai) |
 | [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
@@ -292,6 +293,7 @@ Struktūrinis duomenų tipas `SignRequestClientId` aprašomas kaip:
 	xmlns:ones="http://www.registrucentras.lt/onesignservice">
 	<SOAP-ENV:Body>
 		<ones:SealRequest>
+			<ones:pin>*******</ones:pin>
 			<ones:clientInfo>
 				<clientId>client_id</clientId>
 			</ones:clientInfo>
