@@ -439,3 +439,4 @@ Metodas naudojamas ADOC dokumentui suformuoti. `InitAdoc` tipas sudarytas iš:
       </ns3:InitAdocResponse>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
+```
