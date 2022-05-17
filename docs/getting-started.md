@@ -11,8 +11,8 @@ Norėdami užsisakyti PDF dokumentų pasirašymo žiniatinklinę paslaugą GoSig
 
 Komerciniam pasiūlymui maloniai prašome nurodyti planuojamus preliminarius pasirašomų dokumentų kiekius per mėnesį.
 
-Paslaugai gauti papildomai jums reikės:
-- pateikti norimą API naudotojo identifikatorių (naudotojo vardą);
+Paslaugos administratorius jūsų paprašys:
+- pateikti norimą API naudotojo identifikatorių (naudotojo vardą, pvz., sistema_x);
 - sugeneruoti [RSA raktų porą](key-generation.md);
 - pasirinkti pasirašymo puslapio [šabloną](sign-templates.md).
 
