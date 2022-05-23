@@ -462,7 +462,6 @@ Metodas naudojamas dėti laiko žymoms ant dokumentų. Užklausa sudaryta iš `T
 		<ns1:TimestampRequest>
 			<ns1:clientInfo>
 				<clientId>client_id</clientId>
-				<signerPersonalCode>client_code</signerPersonalCode>
 			</ns1:clientInfo>
 			<ones:file>
 				<fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
