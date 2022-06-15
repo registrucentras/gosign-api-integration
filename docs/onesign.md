@@ -274,6 +274,7 @@ Metodas naudojamas RC spaudui uždėti ant PDF dokumentų. `Seal` tipas sudaryta
 | ------------- | ------------- | ------------- |
 | pin | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | Spaudo PIN kodas |
 | clientInfo | [SignRequestClientId[1]](#signrequestclientid-struktūrinis-tipas)  | Informacija apie klientą |
+| signatureDisplayProperties  | [SignatureDisplayProperties[1]](#signaturedisplayproperties-struktūrinis-tipas) | Parašo atvaizdavimo nustatymai |
 | file  | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF failai) |
 | [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
 
@@ -287,7 +288,7 @@ Struktūrinis duomenų tipas `SignRequestClientId` aprašomas kaip:
 | ------------- | ------------- | ------------- |
 | clientId  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius |
 
-### Užklausos pavyzdys
+### Užklausos pavyzdys be parašo atvaizdavimo
 
 ```xml
 <SOAP-ENV:Envelope
@@ -299,6 +300,35 @@ Struktūrinis duomenų tipas `SignRequestClientId` aprašomas kaip:
 			<ones:clientInfo>
 				<clientId>client_id</clientId>
 			</ones:clientInfo>
+			<ones:file>
+				<fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
+				<fileName>sample.pdf</fileName>
+				<content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
+			</ones:file>
+			<signature>PMuOewIFfS+uualQuTO2uAAbl/OFv219Xp6jtGC13eTbocAoVIJJeu/xmngJpt5rgcjldN0/mGuFY6rh9eDTBDRa8HDXK43VQYRBheHt/QQEJh3DvDmcblrUP30aV8nq0lowYR5xhmxIZDkFwTTaUn9fV476gaG63qBXhCJdx4k=</signature>
+		</ones:SealRequest>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+### Užklausos pavyzdys su parašo atvaizdavimu
+
+```xml
+<SOAP-ENV:Envelope
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:ones="http://www.registrucentras.lt/onesignservice">
+	<SOAP-ENV:Body>
+		<ones:SealRequest>
+			<ones:pin>*******</ones:pin>
+			<ones:clientInfo>
+				<clientId>client_id</clientId>
+			</ones:clientInfo>
+			<ones:signatureDisplayProperties>
+				<position>absolute, 1, 2cm, -6cm, 8cm, 4cm</position>
+				<displayValidity>true</displayValidity>
+				<signatureImageUrl>https://www.registrucentras.lt/img/logo/rc.jpg</signatureImageUrl>
+				<backgroundImageUrl>https://www.registrucentras.lt/img/logo/rc.jpg</backgroundImageUrl>
+			</ones:signatureDisplayProperties>
 			<ones:file>
 				<fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
 				<fileName>sample.pdf</fileName>
