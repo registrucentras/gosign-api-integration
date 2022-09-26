@@ -94,9 +94,9 @@ programinėmis priemonėmis sugeneruojame masyvą (OneSign):
     ],
     'signingType' => 'Signature',
     'file' => [
-        'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS'
-         'fileName' => 'pdf.pdf'
-         'content' => 'failo_turinys_base64',
+        'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS',
+        'fileName' => 'pdf.pdf',
+        'content' => 'failo_turinys_base64',
      ],
 ]
 ```
