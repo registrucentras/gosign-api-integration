@@ -53,7 +53,7 @@ qcl2HbJLeoYAWOZpLQIDAQAB
 -----END PUBLIC KEY-----
 ```
 
-programinėmis priemonėmis sugeneruojame masyvą:
+programinėmis priemonėmis sugeneruojame masyvą (Multisign):
 
 ```php
 [
@@ -82,6 +82,31 @@ serializuojame masyvą, kurį ir pasirašysime:
 ```xml
 <clientId>client_id</clientId><signerPersonalCode>signer_code</signerPersonalCode><responseUrl>http://example.com/app</responseUrl><signingType>Signature</signingType><fileDigest>0v5NcpPFHEttzbsxm0urXlc5MIE=</fileDigest><fileName>pdf.pdf</fileName><fileId>111111</fileId><fileURL>https://example.com/pdf.pdf</fileURL>
 ```
+programinėmis priemonėmis sugeneruojame masyvą (OneSign):
+
+```php
+[
+    'clientInfo' =>
+    [
+        'clientId' => 'client_id'
+        'signerPersonalCode' => 'personal_code'
+        'responseUrl' => 'http://example.com/app',
+    ],
+    'signingType' => 'Signature',
+    'file' => [
+        'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS'
+         'fileName' => 'pdf.pdf'
+         'content' => 'failo_turinys_base64',
+     ],
+]
+```
+
+serializuojame masyvą, kurį ir pasirašysime:
+
+```xml
+<clientId>client_id</clientId><signerPersonalCode>signer_code</signerPersonalCode><responseUrl>http://example.com/app</responseUrl><signingType>Signature</signingType><fileDigest>0v5NcpPFHEttzbsxm0urXlc5MIE=</fileDigest><fileName>pdf.pdf</fileName>
+```
+
 atkreipkite dėmesį:
 - rezultate **nėra įtraukiami kompleksinio tipo elementai** kaip: `clientInfo`, `files` ir t.t..;
 - kadangi saugumui užtikrinti užtenka `fileDigest` rezultate **nėra įtraukiamas `file` `content` elementas**. 
