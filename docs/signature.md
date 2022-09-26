@@ -59,8 +59,8 @@ programinėmis priemonėmis sugeneruojame masyvą (Multisign):
 [
     'clientInfo' =>
     [
-        'clientId' => 'client_id'
-        'signerPersonalCode' => 'personal_code'
+        'clientId' => 'client_id',
+        'signerPersonalCode' => 'personal_code',
         'responseUrl' => 'http://example.com/app',
     ],
     'signingType' => 'Signature',
@@ -68,9 +68,9 @@ programinėmis priemonėmis sugeneruojame masyvą (Multisign):
     [
         [0] => 
         [
-            'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS'
-            'fileName' => 'pdf.pdf'
-            'fileId' => '111111'
+            'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS',
+            'fileName' => 'pdf.pdf',
+            'fileId' => '111111',
             'fileURL' => 'https://example.com/pdf.pdf',
         ],
     ],
@@ -88,8 +88,8 @@ programinėmis priemonėmis sugeneruojame masyvą (OneSign):
 [
     'clientInfo' =>
     [
-        'clientId' => 'client_id'
-        'signerPersonalCode' => 'personal_code'
+        'clientId' => 'client_id',
+        'signerPersonalCode' => 'personal_code',
         'responseUrl' => 'http://example.com/app',
     ],
     'signingType' => 'Signature',
