@@ -12,8 +12,20 @@ Srautinio pasirašymo paslaugos web servisai **naudoja `SOAP` protokolą**. Doku
 - `MultiSign`, kai norima vienu metu pasirašyti **daugiau nei vieną dokumentą tik stacionariu parašu**.
 
 Pasirašymo paslaugos **saugumas ir kliento autentifikavimas užtikrinamas naudojant asimetrinę kriptografiją**:
-- *privatus raktas* (naudoja kliento sistema), siunčiamam **turiniui pasirašyti**;
+- *privatus raktas* (naudoja kliento sistema. Jei naudojate [PHP Client biblioteką](https://github.com/registrucentras/onesign), šis raktas yra perduodamas per [private rakto parametrą](https://github.com/registrucentras/onesign/blob/master/src/Client.php#L110)), siunčiamam **turiniui pasirašyti**;
 - *viešas kliento raktas* (perduodamas kliento GoSign.lt administratoriui), **klientui ir** jo siunčiamam **turiniui patvirtinti**;
-- *viešas GoSign.lt raktas* (perduodamas klientui GoSign.lt administratorių), užklausų **atsakymų vientisumui užtikrinti**.
+- *viešas GoSign.lt raktas*, užklausų **atsakymų vientisumui užtikrinti**.
 
-Kaip ir kur generuoti minėtus raktus rasite mūsų pateiktoje [instrukcijoje](key-generation.md).
+JAVA aplinkoms vieši GoSign.lt raktai:
+
+- [test aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/java_test.key);
+- [prod aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/java_prod.key);
+
+PHP aplinkoms vieši GoSign.lt raktai:
+
+- [test aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/php_test.key);
+- [prod aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/php_prod.key).
+
+Šie raktai yra naudojami validuoti iš pasirašymo serverio gautą atsakymą. Jei naudojate [PHP Client biblioteką](https://github.com/registrucentras/onesign), šie raktai, priklausomai nuo aplinkos tipo, paduodami per [public rakto parametrą](https://github.com/registrucentras/onesign/blob/master/src/Client.php#L112).
+
+Kaip ir kur generuoti savo raktų porą rasite mūsų pateiktoje [instrukcijoje](key-generation.md).
