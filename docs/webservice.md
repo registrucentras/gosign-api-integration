@@ -16,12 +16,12 @@ Pasirašymo paslaugos **saugumas ir kliento autentifikavimas užtikrinamas naudo
 - *viešas kliento raktas* (perduodamas kliento GoSign.lt administratoriui), **klientui ir** jo siunčiamam **turiniui patvirtinti**;
 - *viešas GoSign.lt raktas*, užklausų **atsakymų vientisumui užtikrinti**.
 
-JAVA aplinkoms vieši GoSign.lt raktai:
+JAVA aplinkoms skirti vieši GoSign.lt raktai:
 
 - [test aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/java_test.key);
 - [prod aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/java_prod.key);
 
-PHP aplinkoms vieši GoSign.lt raktai:
+PHP aplinkoms skirti vieši GoSign.lt raktai:
 
 - [test aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/php_test.key);
 - [prod aplinkai](https://raw.githubusercontent.com/registrucentras/gosign-api-integration/master/docs/keys/php_prod.key).
