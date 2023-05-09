@@ -37,14 +37,14 @@ nav_order: 1
 
 Struktūrinis duomenų tipas `SignRequestWebClientInfo` aprašo `SignRequestClientInfo` praplėtimą. Rezultate užklausa sudaryta iš:
 
-| Elementas  | Tipas | Aprašymas |
-| ------------- | ------------- | ------------- |
-| clientId  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius |
+| Elementas  | Tipas                                                     | Aprašymas |
+| ------------- |-----------------------------------------------------------| ------------- |
+| clientId  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius |
 | signerPersonalCode  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Asmens, kuris turi pasirašyti dokumentą, asmens kodas. Jei šis parametras nenurodytas, dokumentą gali pasirašyti bet kuris asmuo |
 | locale  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo sąsajos kalba ("lt" – Lietuvių kalba, "en" – Anglų kalba) |
-| responseUrl  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string) | Web puslapio, kuris pasibaigus dokumento pasirašymui turi būti užkrautas naudotojo naršyklėje, adresas |
+| responseUrl  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Web puslapio, kuris pasibaigus dokumento pasirašymui turi būti užkrautas naudotojo naršyklėje, adresas |
 | remoteAddress  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo prisijungimo IP adresas. Naudojamas statistiniams duomenims rinkti |
-| acceptableInfrastructure  | [infrastructureType[0..2]](#infrastructuretype-tipas) | Sąrašas, nurodantis kokio tipo pasirašymo infrastruktūra gali būti naudojama pasirašymui. Galimos elemento reikšmės aprašytos skyriuje. Kiekvienai leistinai infrastruktūrai nurodomas atskiras acceptableInfrastructure elementas. Jei nėra nurodytas nei vienas acceptableInfrastructure elementas, leidžiama pasirašyti naudojant bet kurią infrastruktūrą |
+| acceptableInfrastructure  | [infrastructureType[0..3]](#infrastructuretype-tipas)     | Sąrašas, nurodantis kokio tipo pasirašymo infrastruktūra gali būti naudojama pasirašymui. Galimos elemento reikšmės aprašytos skyriuje. Kiekvienai leistinai infrastruktūrai nurodomas atskiras acceptableInfrastructure elementas. Jei nėra nurodytas nei vienas acceptableInfrastructure elementas, leidžiama pasirašyti naudojant bet kurią infrastruktūrą |
 
 ### StandardSignatureMetadata struktūrinis tipas
 
@@ -81,10 +81,12 @@ Paprastas duomenų tipas `signingType` nurodo pasirašymo tipą:
 
 Paprastas duomenų tipas `infrastructureType` nurodo galimus pasirašymo infrastruktūros tipus:
 
-| Reikšmė  | Aprašymas |
-| ------------- | ------------- |
-| Stationary  | Leidžiama pasirašyti naudojant stacionarų elektroninį parašą |
-| Mobile | Leidžiama pasirašyti naudojant mobilų elektroninį parašą |
+| Reikšmė    | Aprašymas                                                    |
+|------------|--------------------------------------------------------------|
+| Stationary | Leidžiama pasirašyti naudojant stacionarų elektroninį parašą |
+| Mobile     | Leidžiama pasirašyti naudojant mobilų elektroninį parašą     |
+| RasPerson  | Leidžiama pasirašyti naudojant LT ID elektroninį parašą      |
+| RasCompany | Leidžiama pasirašyti naudojant LT ID elektroninį spaudą      |
 
 ### SourceFileBinary struktūrinis tipas
 

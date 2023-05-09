@@ -76,9 +76,11 @@ Paprastas duomenų tipas `signingType` nurodo pasirašymo tipą:
 
 Paprastas duomenų tipas `infrastructureType` nurodo galimus pasirašymo infrastruktūros tipus:
 
-| Reikšmė  | Aprašymas |
-| ------------- | ------------- |
+| Reikšmė     | Aprašymas                                                    |
+|-------------|--------------------------------------------------------------|
 | Stationary  | Leidžiama pasirašyti naudojant stacionarų elektroninį parašą |
+| RasPerson   | Leidžiama pasirašyti naudojant LT ID elektroninį parašą      |
+| RasCompany  | Leidžiama pasirašyti naudojant LT ID elektroninį spaudą      |
 
 ### SourceFileRemote struktūrinis tipas
 
