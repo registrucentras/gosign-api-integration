@@ -22,14 +22,15 @@ nav_order: 1
 
 `InitSigning` metodo struktūrinis duomenų tipas sudarytas iš elementų:
 
-| Elementas  | Tipas | Aprašymas |
-| ------------- | ------------- | ------------- |
-| clientInfo  | [SignRequestWebClientInfo[1]](#signrequestwebclientinfo-struktūrinis-tipas)  | Informacija apie klientą |
-| signatureMetadata  | [StandardSignatureMetadata[1]](#standardsignaturemetadata-struktūrinis-tipas) | Parašo metaduomenys |
-| signatureDisplayProperties  | [SignatureDisplayProperties[1]](#signaturedisplayproperties-struktūrinis-tipas) | Parašo atvaizdavimo nustatymai |
-| signingType  | [signingType[1]](#signingtype-tipas) | Reikšmė nurodanti ar elektroniniame paraše turi būti uždėta laiko žyma ar žyma su patikra ([OCSP](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol)) |
-| file  | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF arba ADOC failai) |
-| [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą |
+| Elementas                  | Tipas | Aprašymas                                                                                                                                                            |
+|----------------------------| ------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| clientInfo                 | [SignRequestWebClientInfo[1]](#signrequestwebclientinfo-struktūrinis-tipas)  | Informacija apie klientą                                                                                                                                             |
+| signatureMetadata          | [StandardSignatureMetadata[1]](#standardsignaturemetadata-struktūrinis-tipas) | Parašo metaduomenys                                                                                                                                                  |
+| signatureDisplayProperties | [SignatureDisplayProperties[1]](#signaturedisplayproperties-struktūrinis-tipas) | Parašo atvaizdavimo nustatymai                                                                                                                                       |
+| mobileSigningText          | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Mobiliajame įrenginyje pasirašančiajam rodomas tekstas patvirtinimo lange |                                                                                           |                                                                                                                                                                    |
+| signingType                | [signingType[1]](#signingtype-tipas) | Reikšmė nurodanti ar elektroniniame paraše turi būti uždėta laiko žyma ar žyma su patikra ([OCSP](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol)) |
+| file                       | [SourceFileBinary[1..N]](#sourcefilebinary-struktūrinis-tipas)  | Failas pasirašymui. Pateikiamas failo turinys (tik PDF arba ADOC failai)                                                                                             |
+| [signature](signature.md)  | [base64Binary[1]](https://www.w3.org/TR/xmlschema-2/#base64Binary)  | Kliento sistemos sugeneruotas parašas patvirtinantis užklausos duomenų teisingumą                                                                                    |
 
 ## InitSigning metode naudojami kiti struktūriniai tipai
 
