@@ -37,14 +37,16 @@ nav_order: 1
 
 Struktūrinis duomenų tipas `SignRequestWebClientInfo` aprašo `SignRequestClientInfo` praplėtimą. Rezultate užklausa sudaryta iš:
 
-| Elementas  | Tipas                                                     | Aprašymas |
-| ------------- |-----------------------------------------------------------| ------------- |
-| clientId  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius |
-| signerPersonalCode  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Asmens, kuris turi pasirašyti dokumentą, asmens kodas. Jei šis parametras nenurodytas, dokumentą gali pasirašyti bet kuris asmuo |
-| locale  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo sąsajos kalba ("lt" – Lietuvių kalba, "en" – Anglų kalba) |
-| responseUrl  | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Web puslapio, kuris pasibaigus dokumento pasirašymui turi būti užkrautas naudotojo naršyklėje, adresas |
-| remoteAddress  | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo prisijungimo IP adresas. Naudojamas statistiniams duomenims rinkti |
-| acceptableInfrastructure  | [infrastructureType[0..3]](#infrastructuretype-tipas)     | Sąrašas, nurodantis kokio tipo pasirašymo infrastruktūra gali būti naudojama pasirašymui. Galimos elemento reikšmės aprašytos skyriuje. Kiekvienai leistinai infrastruktūrai nurodomas atskiras acceptableInfrastructure elementas. Jei nėra nurodytas nei vienas acceptableInfrastructure elementas, leidžiama pasirašyti naudojant bet kurią infrastruktūrą |
+| Elementas                | Tipas                                                     | Aprašymas                                                                                                                                                                                                                                                                                                                                                     |
+|--------------------------|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| clientId                 | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Unikalus pasirašymo paslaugos administratorių suteiktas kliento informacinės sistemos identifikatorius                                                                                                                                                                                                                                                        |
+| signerPersonalCode       | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Asmens, kuris turi pasirašyti dokumentą, asmens kodas. Jei šis parametras nenurodytas, dokumentą gali pasirašyti bet kuris asmuo                                                                                                                                                                                                                              |
+| signerCompanyCode        | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Įmonės kodas.                                                                                                                                                                                                                                                                                                                                                 |
+| signerPhoneNumber        | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Asmens, kuris turi pasirašyti dokumentą, telefono numeris.                                                                                                                                                                                                                                                                                                    |
+| locale                   | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo sąsajos kalba ("lt" – Lietuvių kalba, "en" – Anglų kalba)                                                                                                                                                                                                                                                                      |
+| responseUrl              | [string[1]](https://www.w3.org/TR/xmlschema-2/#string)    | Web puslapio, kuris pasibaigus dokumento pasirašymui turi būti užkrautas naudotojo naršyklėje, adresas                                                                                                                                                                                                                                                        |
+| remoteAddress            | [string[0..1]](https://www.w3.org/TR/xmlschema-2/#string) | Pasirašymo paslaugos vartotojo prisijungimo IP adresas. Naudojamas statistiniams duomenims rinkti                                                                                                                                                                                                                                                             |
+| acceptableInfrastructure | [infrastructureType[0..3]](#infrastructuretype-tipas)     | Sąrašas, nurodantis kokio tipo pasirašymo infrastruktūra gali būti naudojama pasirašymui. Galimos elemento reikšmės aprašytos skyriuje. Kiekvienai leistinai infrastruktūrai nurodomas atskiras acceptableInfrastructure elementas. Jei nėra nurodytas nei vienas acceptableInfrastructure elementas, leidžiama pasirašyti naudojant bet kurią infrastruktūrą |
 
 ### StandardSignatureMetadata struktūrinis tipas
 
@@ -377,21 +379,21 @@ Metodas naudojamas dėti laiko žymoms ant dokumentų. Užklausa sudaryta iš `T
 
 ```xml
 <SOAP-ENV:Envelope
-	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns:ns1="http://www.registrucentras.lt/onesignservice">
-	<SOAP-ENV:Body>
-		<ns1:TimestampRequest>
-			<ns1:clientInfo>
-				<clientId>client_id</clientId>
-			</ns1:clientInfo>
-			<ones:file>
-				<fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
-				<fileName>sample.pdf</fileName>
-				<content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
-			</ones:file>
-			<signature>PMuOewIFfS+uualQuTO2uAAbl/OFv219Xp6jtGC13eTbocAoVIJJeu/xmngJpt5rgcjldN0/mGuFY6rh9eDTBDRa8HDXK43VQYRBheHt/QQEJh3DvDmcblrUP30aV8nq0lowYR5xhmxIZDkFwTTaUn9fV476gaG63qBXhCJdx4k=</signature>
-		</ns1:TimestampRequest>
-	</SOAP-ENV:Body>
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ns1="http://www.registrucentras.lt/onesignservice">
+    <SOAP-ENV:Body>
+        <ns1:TimestampRequest>
+            <ns1:clientInfo>
+                <clientId>client_id</clientId>
+            </ns1:clientInfo>
+            <ones:file>
+                <fileDigest>v9AJ9QDAVxlf/eZvrmT5L6X1m3I=</fileDigest>
+                <fileName>sample.pdf</fileName>
+                <content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
+            </ones:file>
+            <signature>PMuOewIFfS+uualQuTO2uAAbl/OFv219Xp6jtGC13eTbocAoVIJJeu/xmngJpt5rgcjldN0/mGuFY6rh9eDTBDRa8HDXK43VQYRBheHt/QQEJh3DvDmcblrUP30aV8nq0lowYR5xhmxIZDkFwTTaUn9fV476gaG63qBXhCJdx4k=</signature>
+        </ns1:TimestampRequest>
+    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 ```
 
@@ -399,19 +401,19 @@ Metodas naudojamas dėti laiko žymoms ant dokumentų. Užklausa sudaryta iš `T
 
 ```xml
 <SOAP-ENV:Envelope
-	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-	<SOAP-ENV:Header/>
-	<SOAP-ENV:Body>
-		<ns3:TimestampResponse
-			xmlns:ns3="http://www.registrucentras.lt/onesignservice">
-			<status>Signed</status>
-			<file>
-				<fileDigest>b7ITt5heY+e6Lm+AXJnYgqBiLos=</fileDigest>
-				<fileName>sample-s0812.pdf</fileName>
-				<content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
-			</file>
-			<signature>lDzM9em93bknUW/TdTGtqd97JyCFEdOBbuLUzWFxLNCRJAnoe/bF/zkj9jdByWl6CWwOj6ECqy3Sb6mZ9JoPWDvHdWnKYxd/QerqZMWA+IOuWTWbmAZxTyncHvVlP6yxZkCSVYQmkuywKPJG8Ra86W9h3n0HiXmgIo6Gf+rtty/AVA+zefhhuhoHwn6B8uXJ9mgNLuD6mtKZq+Iw5pStUFNTjRGID5HEtEQ9SmUgcKgjHCon1HcsKRxGulMWOCo3jqNejJt+08TVTTKa9DQmKY35nUFC5cehQwjX2E2XJtDHPxXoKhFJJvw4g27gZjUb1j/mZzkK0R3RE9WYp11sqQ==</signature>
-		</ns3:TimestampResponse>
-	</SOAP-ENV:Body>
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns3:TimestampResponse
+                xmlns:ns3="http://www.registrucentras.lt/onesignservice">
+            <status>Signed</status>
+            <file>
+                <fileDigest>b7ITt5heY+e6Lm+AXJnYgqBiLos=</fileDigest>
+                <fileName>sample-s0812.pdf</fileName>
+                <content>TjRMenUuUyhbOC8pQ1RFLV4mNDtndms1XyEwYkhgOW5AcSY8QEo4Ylp9WGc9dENLOGhtb1BxYmhiM1dVeTRjXzZ7VDosJEtpKVhjfE1EOyo8eWwpSmQ4bnZHTTIiKHpAamNDdWNzYHU8LkJcMSBZcGhNLlA7SmtONHNwNmNvMCfR08lbEdPXl4xOFhbdU09WV9vSz5+RVRObXMlR3hZSCZXeClDciZNRDAgPnV2NDJPPXZGTF11LWJUcjkkdG54UGZHUWl+fCsgX0pral4uL18lVTBsVVA=PEBXMCUpJE1pTl56UCVpTi1KWiUrXD00eUpXY3NdW1hfIk4hcn1ZbC88KzxERUgSGJ3TSk6dSkhYyRyMT8zajY1TCE3RkxQcUwhRW5IVCBxSmNKdyUydkpxLzxzZFhsdCEmYjc1L3YjR0RiNXFPakJpNEYsTSJoSGp+Z0dmN1clK1omYGdBeTt3XnY9djF8L15JWiE+KCozZVR2ZFRlalEiPUFHO0puMiJRZWs9SztscHhkUHo+WUxbTTo5e3ovNmgheSQ+bjB7Y3g0OmFtInZeSCE3Tmg6TldtT3wkWCBfRm5CNFVEYnlmbjVUODVkZSh+PD9kJFpcYSYuSztreCo5IDlXciEwVk1aRTw+JFRWSkh9RTxAayk/fUR0ZDwmWlBdfV9WJGcjSHdJO2h4fG4lYm9BREBZdj=fmxFdzRkIjE/ImxSMFpHPTBqI2lnMXdvZn16I0ZNOHdDdFdUWVw2e3NsKDhRQy5gJihoaHVuVzopOkRddXV2MSVzK3E/QmkhenV2XE56dVk8SF1LLF9efF93YH51bFJ5LSN2dVpxQ2pLXWJ+cGl6fn1zdT5PRnZHKSJLVW8qMH5KXlMnMEoLnklK1ZPYDIzT2llKioncnF+NSRuIGQgbS9uZyZzVE5jXHU5JVd7PkBFXiRWdmhxfl12UFM=fjYrJElZdikwRyF1S1RHOkUjZCwqT1xBdi9NVkB+NUR3eDAxO3xkJ0ZTSTA=</content>
+            </file>
+            <signature>lDzM9em93bknUW/TdTGtqd97JyCFEdOBbuLUzWFxLNCRJAnoe/bF/zkj9jdByWl6CWwOj6ECqy3Sb6mZ9JoPWDvHdWnKYxd/QerqZMWA+IOuWTWbmAZxTyncHvVlP6yxZkCSVYQmkuywKPJG8Ra86W9h3n0HiXmgIo6Gf+rtty/AVA+zefhhuhoHwn6B8uXJ9mgNLuD6mtKZq+Iw5pStUFNTjRGID5HEtEQ9SmUgcKgjHCon1HcsKRxGulMWOCo3jqNejJt+08TVTTKa9DQmKY35nUFC5cehQwjX2E2XJtDHPxXoKhFJJvw4g27gZjUb1j/mZzkK0R3RE9WYp11sqQ==</signature>
+        </ns3:TimestampResponse>
+    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 ```
