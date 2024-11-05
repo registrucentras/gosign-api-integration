@@ -8,6 +8,7 @@ nav_order: 5
 # Signature elementas
 
 Elemento `signature` reikšmė **užtikrina užklausos duomenų teisingumą**. Iš pasirašomų elementų sekos sudaroma tekstinė pasirašomos informacijos reprezentacija. Ši **reprezentacija sudaroma eilės tvarka apjungiant visų užklausos XML elementų tekstines reprezentacijas**. Jei elementas yra praleistas web serviso užklausoje, jis taip pat yra praleidžiamas generuojant parašo reikšmę. Kiekvienas nepraleistas elementas reprezentuojamas tokiu formatu: „<pavadinimas>reikšmė</pavadinimas>" (čia „pavadinimas" yra elemento pavadinimas užklausos ar atsakymo XML struktūroje, „reikšmė" yra to elemento reikšmė). Kiekvieno elemento reikšmė generuojama pagal elemento tipą naudojantis tokiomis taisyklėmis:
+
 - **boolean** tipo elemento **reikšmė verčiama į tekstinę vertę** „true" arba „false";
 - **kompleksiniai tipai** (angl. complex type) **formuojami be pradžios ir užveriančiosios elemento** pavadinimo gairių (angl. tags);
 - **tekstinė pasirašomos informacijos reprezentacija** (`signature` elementas) **konvertuojama į baitų** seką naudojant UTF-8 koduotę;
@@ -64,9 +65,9 @@ programinėmis priemonėmis sugeneruojame masyvą (Multisign):
         'responseUrl' => 'http://example.com/app',
     ],
     'signingType' => 'Signature',
-    'files' => 
+    'files' =>
     [
-        [0] => 
+        [0] =>
         [
             'fileDigest' => '4paS4paSTXLilpLilpJLbc27MeKWkkvilpJeVzkw4paS',
             'fileName' => 'pdf.pdf',
@@ -82,6 +83,7 @@ serializuojame masyvą, kurį ir pasirašysime:
 ```xml
 <clientId>client_id</clientId><signerPersonalCode>signer_code</signerPersonalCode><responseUrl>http://example.com/app</responseUrl><signingType>Signature</signingType><fileDigest>0v5NcpPFHEttzbsxm0urXlc5MIE=</fileDigest><fileName>pdf.pdf</fileName><fileId>111111</fileId><fileURL>https://example.com/pdf.pdf</fileURL>
 ```
+
 programinėmis priemonėmis sugeneruojame masyvą (OneSign):
 
 ```php
@@ -108,8 +110,9 @@ serializuojame masyvą, kurį ir pasirašysime:
 ```
 
 atkreipkite dėmesį:
+
 - rezultate **nėra įtraukiami kompleksinio tipo elementai** kaip: `clientInfo`, `files` ir t.t..;
-- kadangi saugumui užtikrinti užtenka `fileDigest` rezultate **nėra įtraukiamas `file` `content` elementas**. 
+- kadangi saugumui užtikrinti užtenka `fileDigest` rezultate **nėra įtraukiamas `file` `content` elementas**.
 
 pasirašome naudojant PHP:
 
@@ -117,11 +120,11 @@ pasirašome naudojant PHP:
 function sign(string $content, string $privateKey)
 {
 	$sign = '';
-		
+
 	$key = openssl_get_privatekey($privateKey);
-		
+
 	openssl_sign($content, $sign, $key);
-		
+
 	return $sign;
 }
 
@@ -166,4 +169,232 @@ base64 encode reikšmė perduodama per `signature` užklausos elementą:
 
 ```xml
 <signature>NkzVv5BN4o8apCRhi6J+kJXXBOfMWJDGocniq6eM4errlbFwOOrsW67iRh0hM6scaQ5Lzuf35/c3fgtHHeNPqXzHdQTRDtCBBfNUfHQrKt3gK6UEzfChBtfeO9tFiR80SJJ4trt+kcP197kR+6y8fjHCMcJUIt/NbXaFahf5qkU=</signature>
+```
+
+**JAVA pavyzdys**
+
+Šis vadovas pateikia pavyzdį, kaip sukurti skaitmeninį parašą naudojant RSA algoritmą Java kalboje. Skaitmeniniai parašai yra būtini norint patikrinti duomenų vientisumą ir autentiškumą įvairiose aplikacijose. Naudosime Java `Signature` API sukurti `SHA1withRSA` parašui ant nurodytų duomenų.
+
+## Reikalavimai
+
+- **Java SE 8** ar naujesnė versija
+- **RSA privatūs raktas** pasirašymui
+
+## Kodo pavyzdys: `SignatureCreator` klasė
+
+`SignatureCreator` klasė kaupia duomenis, kuriuos norite pasirašyti, ir tada sugeneruoja parašą naudodama pateiktą RSA privatų raktą.
+
+```java
+import java.nio.charset.StandardCharsets;
+import java.security.PrivateKey;
+import java.security.Signature;
+
+public class SignatureCreator {
+
+    private String algorithm = "SHA1withRSA";  // Parašymo algoritmas
+    private List<String> dataElements = new ArrayList<>();  // Kaupia duomenis, kurie bus pasirašomi
+
+    /**
+     * Prideda duomenis prie parašo turinio.
+     *
+     * @param element Pridedami tekstiniai duomenys
+     */
+    public void addData(String element) {
+        dataElements.add(element);
+    }
+
+    /**
+     * Sugeneruoja parašą remiantis sukauptais duomenimis.
+     *
+     * @param privateKey RSA privatus raktas, naudojamas pasirašyti duomenis
+     * @return Parašas Base64
+     * @throws Exception jei įvyksta klaida pasirašant
+     */
+    public byte[] sign(PrivateKey privateKey) throws Exception {
+          // Sugeneruojame bendrą teksto eilutę iš visų elementų
+        StringBuilder dataToSign = new StringBuilder();
+        for (String element : dataElements) {
+            dataToSign.append(element);
+        }
+
+        // Inicializuojame parašo objektą
+        Signature signature = Signature.getInstance(algorithm);
+        signature.initSign(privateKey);
+        signature.update(dataToSign.toString().getBytes(StandardCharsets.UTF_8));
+
+        // Sugeneruojame parašą
+        return signature.sign();
+    }
+}
+```
+
+## Reikalavimai
+
+Štai kaip naudoti SignatureCreator klasę pasirašyti duomenis:
+
+1. Inicializuokite SignatureCreator Klasę
+
+```java
+SignatureCreator signatureCreator = new SignatureCreator();
+```
+
+2. Pridėkite duomenis pasirašymui
+
+- dataElements leidžia pridėti duomenis po vieną dalį. Galite pridėti tiek duomenų eilučių, kiek reikia, klasė jas sujungs į vieną seką.
+
+```java
+ String[] dataElements = {
+                    "<clientId>Test</clientId>",
+                    "<title>title</title>",
+                    "<signerId>signerId</signerId>",
+                    "<individualName>individual</individualName>",
+                    "<position>position</position>",
+                    "<division>division</division>",
+                    "<code>authorCode</code>",
+                    "<name>authorName</name>",
+                    "<email>authorEmail</email>",
+                    "<address>authorAddress</address>",
+                    "<code>recipientCode</code>",
+                    "<name>recipientName</name>",
+                    "<email>recipientEmail</email>",
+                    "<address>recipientAddress</address>",
+                    "<fileDigest>kP/SNZAI2CKYgh0Wshd4xcOa7DY=</fileDigest>",
+                    "<fileName>sample.pdf</fileName>",
+            };
+```
+
+3. Įkelkite RSA privatų raktą
+
+- Tarkime, kad jūsų RSA privatus raktas jau įkeltas kaip PrivateKey objektas.
+
+```java
+ PrivateKey privateKey = loadPrivateKey(); // Įkelkite savo RSA privatų raktą
+```
+
+4. Pasirašykite duomenis
+
+- Kai duomenys paruošti ir privatus raktas įkeltas, kvieskite sign(), kad sugeneruotumėte parašą.
+
+```java
+try {
+    byte[] signatureBytes = signatureCreator.sign(privateKey);
+    String signatureBase64 = java.util.Base64.getEncoder().encodeToString(signatureBytes);
+    System.out.println("Sugeneruotas Parašas (Base64): " + signatureBase64);
+} catch (Exception e) {
+    System.err.println("Klaida generuojant parašą: " + e.getMessage());
+}
+```
+
+## Pilnas pavyzdys
+
+Štai pilnas naudojimo pavyzdys, kuris apjungia visus žingsnius:
+
+```java
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.util.Base64;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // Inicializuokite parašo kūrėją
+            SignatureCreator signatureCreator = new SignatureCreator();
+
+            // Pridėkite duomenis, kurie bus pasirašomi
+            String[] dataElements = {
+                    "<clientId>Test</clientId>",
+                    "<title>title</title>",
+                    "<signerId>signerId</signerId>",
+                    "<individualName>individual</individualName>",
+                    "<position>position</position>",
+                    "<division>division</division>",
+                    "<code>authorCode</code>",
+                    "<name>authorName</name>",
+                    "<email>authorEmail</email>",
+                    "<address>authorAddress</address>",
+                    "<code>recipientCode</code>",
+                    "<name>recipientName</name>",
+                    "<email>recipientEmail</email>",
+                    "<address>recipientAddress</address>",
+                    "<fileDigest>kP/SNZAI2CKYgh0Wshd4xcOa7DY=</fileDigest>",
+                    "<fileName>dummy.pdf</fileName>",
+            };
+
+              // Pridedame visus duomenų elementus
+            for (String element : dataElements) {
+                signatureCreator.addData(element);
+            }
+
+            // Įkelkite savo privatų raktą
+            PrivateKey privateKey = loadPrivateKey();
+
+            // Sugeneruokite parašą
+            byte[] signatureBytes = signatureCreator.sign(privateKey);
+            String signatureBase64 = Base64.getEncoder().encodeToString(signatureBytes);
+
+            // Parašas Base64 formatu
+            System.out.println("Sugeneruotas Parašas (Base64): " + signatureBase64);
+
+        } catch (Exception e) {
+            System.err.println("Klaida generuojant parašą: " + e.getMessage());
+        }
+    }
+
+    private static PrivateKey loadPrivateKey() {
+       try {
+            String privateKeyPEM = "-----BEGIN PRIVATE KEY-----Jūsų sugeneruotas raktas-----END PRIVATE KEY-----";
+
+            // Pašaliname BEGIN ir END raktų žymas
+            String privateKeyPEMFormatted = privateKeyPEM
+                    .replace("-----BEGIN PRIVATE KEY-----", "")
+                    .replace("-----END PRIVATE KEY-----", "")
+                    .replaceAll("\\s+", "");
+
+            System.out.println("Formatuotas raktas: " + privateKeyPEMFormatted);
+            System.out.println("Rakto ilgis: " + privateKeyPEMFormatted.length());
+
+            try {
+                // Dekuoduojame Base64 užkoduotą eilutę
+                byte[] pkcs8EncodedBytes = Base64.getDecoder().decode(privateKeyPEMFormatted);
+
+                // Sukuriame PKCS8EncodedKeySpec
+                PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(pkcs8EncodedBytes);
+
+                // Sugeneruojame privatų raktą naudojant KeyFactory
+                KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+                return keyFactory.generatePrivate(keySpec);
+
+            } catch (IllegalArgumentException e) {
+                System.err.println("Base64 dekodavimo klaida: " + e.getMessage());
+                System.err.println("Neteisingas Base64 raktas: " + privateKeyPEMFormatted);
+                throw e;
+            }
+        } catch (Exception e) {
+            System.err.println("Klaida įkeliant privatų raktą: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}
+```
+
+## Parašo kūrimo paaiškinimas
+
+1. Inicializuojamas pasirašymo algoritmas: naudojame "SHA1withRSA" kaip algoritmą.
+2. Sujungiami duomenys pasirašymui: visi pridedami duomenys sujungiami į vieną seką. Įsitikinkite, kad pridėjote kiekvieną elementą reikiama tvarka.
+3. Konvertuojami duomenys į baitus: Kaupiami duomenys konvertuojami į UTF-8 baitus, kad būtų suderinami su kitomis sistemomis.
+4. Pasirašoma privačiu raktu: parašas generuojamas naudojant RSA privatų raktą, kuris sukuria unikalų parašą pateiktiems duomenims.
+
+## Parašo pavyzdys
+
+Kai paleisite šį pavyzdį su savo privačiu raktu ir duomenimis, gausite parašą Base64 formatu:
+
+```bash
+Sugeneruotas Parašas (Base64): gU4ordhO3/OJEVWGYLMuFgG7Za6URfHnCxBR+A+jkC+MLoFOFwCKxjDwSCg+37/26iheqQq9MTxXsPy+xFhoMsle8J1DrTRFK0zFz2TR2ypb7kVruDgpQJiRbXKeYUrvRHnvr4+WLRkLgGluYHDhVfg/FYBmtvhUCDF7YqKDOi2lDYFWgjOFWhKRFY5PFELnLjZUdjgs3lpfnbQ6+pZ2kcmPXBbmGyh4yyyyTIC+Kd6gttOW/7XtticSlvndYz/W6MuNpgtWxsVglPqLxkBe2KAklRd80UNVgn9mbou+jjU1hyU7OOs3QtG1NraWcgGASppQh/NkdWMPtjhzTQBAwg==
+```
+
+base64 encode reikšmė perduodama per `signature` užklausos elementą:
+
+```xml
+<signature>gU4ordhO3/OJEVWGYLMuFgG7Za6URfHnCxBR+A+jkC+MLoFOFwCKxjDwSCg+37/26iheqQq9MTxXsPy+xFhoMsle8J1DrTRFK0zFz2TR2ypb7kVruDgpQJiRbXKeYUrvRHnvr4+WLRkLgGluYHDhVfg/FYBmtvhUCDF7YqKDOi2lDYFWgjOFWhKRFY5PFELnLjZUdjgs3lpfnbQ6+pZ2kcmPXBbmGyh4yyyyTIC+Kd6gttOW/7XtticSlvndYz/W6MuNpgtWxsVglPqLxkBe2KAklRd80UNVgn9mbou+jjU1hyU7OOs3QtG1NraWcgGASppQh/NkdWMPtjhzTQBAwg==</signature>
 ```
