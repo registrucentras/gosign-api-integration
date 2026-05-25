@@ -14,13 +14,13 @@ API **atsakymai turi būti patikrinti** naudojant GoSign.lt administracijos sute
 Turime viešą raktą, kurį **perdavė GoSign.lt administracija**:
 ```bash
 -----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvMMlz6PVuKly4WKw9kGC
-zo33gMY2hLzokoZkQe/5jSOQtDzNt3L2Bt1IJeQv5Ivlpjy+Sz0FZAgMb1T7m5nX
-DUN2ZwK2srXC4SzYTK0qD0i+AGfzjeHbGUD2ETBQ+S9js5VpMX5Q957mAyeDWmbA
-v3UGQ6CAnAzYQLpoApxhmIgy0Ers/RwtqKZBnFcyeGXqq7ft4HtWH1UnAclxTC7b
-YAHH+sKsqpIWvZFGDcct0zeUVnr7KfTQmS3Za505SdEL45Kow2+GoLIdup2+IqPA
-hG0uqAEKwxs5/DMCH8U+dGspMll9ltsQrDYw1UTkL6zLnCSw77+3Xu3XwY2vJZ3r
-9wIDAQAB
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA9l+OCK6T9jnn4e/kNQVP
+oyePlH+GhK6Ik1gEW+OH71gpdXbjWatw9pBE2eeSOovQkSmjlsbh5WzSzkr5ywK/
+BEoco+ns6fugIwjypAmRc2JJo1CUW2GGQnEF+ociysjNbpGLDqweawL+UzK+JL+M
+nxOyRBw9JJZDj+fQvErpVk0mec3TUTEUlbjJd5WbwbtRXE4DooZFVgccbamg10la
+0E4b9/DgSUJXRliOw5Cn1rXC/nn9aYSjsx89DeTRHZmKqPWCsmI6k+WTzhh/Kpdw
+5xfPcgj3T7Hav0xXBTM2QR3XSyGg/EfYqvsV2FLTxDaDvVEBMc1pMX00ihsBTgoh
+dQIDAQAB
 -----END PUBLIC KEY-----
 ```
 
